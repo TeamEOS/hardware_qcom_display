@@ -47,12 +47,22 @@ enum {
     GRALLOC_USAGE_PRIVATE_IOMMU_HEAP      =       GRALLOC_USAGE_PRIVATE_2,
     /* MM heap is a carveout heap for video, can be secured*/
     GRALLOC_USAGE_PRIVATE_MM_HEAP         =       GRALLOC_USAGE_PRIVATE_3,
+#ifdef QCOM_BSP
+    /* ADSP heap is a carveout heap, is not secured*/
+    GRALLOC_USAGE_PRIVATE_ADSP_HEAP       =       0x01000000,
+#else
     /* CAMERA heap is a carveout heap for camera, is not secured*/
     GRALLOC_USAGE_PRIVATE_CAMERA_HEAP     =       0x01000000,
+#endif
 
     /* Set this for allocating uncached memory (using O_DSYNC)
      * cannot be used with noncontiguous heaps */
     GRALLOC_USAGE_PRIVATE_UNCACHED        =       0x02000000,
+
+#ifdef QCOM_BSP
+    /* Buffer content should be displayed on an primary display only */
+    GRALLOC_USAGE_PRIVATE_INTERNAL_ONLY   =       0x04000000,
+#endif
 
     /* Buffer content should be displayed on an external display only */
     GRALLOC_USAGE_PRIVATE_EXTERNAL_ONLY   =       0x08000000,
@@ -71,6 +81,15 @@ enum {
      * but still need to be protected from screen captures
      */
     GRALLOC_USAGE_PRIVATE_CP_BUFFER       =       0x00400000,
+    
+#ifdef QCOM_BSP
+    /* CAMERA heap is a carveout heap for camera, is not secured*/
+    GRALLOC_USAGE_PRIVATE_CAMERA_HEAP     =       0x00400000,
+
+    /* This flag is used for SECURE display usecase */
+    GRALLOC_USAGE_PRIVATE_SECURE_DISPLAY  =       0x00800000,
+#endif
+
 };
 
 enum {
