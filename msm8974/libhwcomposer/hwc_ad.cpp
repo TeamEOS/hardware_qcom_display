@@ -131,8 +131,10 @@ AssertiveDisplay::AssertiveDisplay() :mWbFd(-1), mDoable(false),
         // 0 means feature exists but turned off, will be turned on by hwc
         // 1 means feature is turned on by hwc
         if(adRead() >= 0) {
+#ifndef DISABLE_ADAPTIVE_DISPLAY
             ALOGD_IF(DEBUG, "Assertive display feature supported");
             mFeatureEnabled = true;
+#endif
         }
         closeWbFb(fd);
     }

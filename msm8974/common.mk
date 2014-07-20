@@ -29,6 +29,10 @@ ifeq ($(TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS), true)
     common_flags += -DFORCE_HWC_FOR_VIRTUAL_DISPLAYS
 endif
 
+ifeq ($(TARGET_DISABLE_ADAPTIVE_DISPLAY), true)
+    common_flags += -DDISABLE_ADAPTIVE_DISPLAY
+endif
+
 common_deps  :=
 kernel_includes :=
 
