@@ -33,6 +33,10 @@ ifeq ($(TARGET_DISABLE_ADAPTIVE_DISPLAY), true)
     common_flags += -DDISABLE_ADAPTIVE_DISPLAY
 endif
 
+ifeq ($(TARGET_USES_LEGACY_HEAP_MASK),true)
+    common_flags += -D_ION_HEAP_MASK_COMPATIBILITY_WA
+endif
+
 common_deps  :=
 kernel_includes :=
 
