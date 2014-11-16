@@ -1,3 +1,4 @@
+ifeq ($(TARGET_QCOM_DISPLAY_VARIANT),)
 ifeq ($(call my-dir),$(call project-path-for,qcom-display))
 
 ifneq ($(filter msm8084 msm8x84,$(TARGET_BOARD_PLATFORM)),)
@@ -17,4 +18,5 @@ endif
 endif
 endif
 
+endif
 endif
