@@ -1,7 +1,11 @@
 # This flag will be set to true during migration to Snapdragon Display Engine.
 TARGET_USES_SDE = false
 
-display-hals := libgralloc libcopybit liblight libmemtrack
+display-hals := libgralloc libcopybit libmemtrack
+
+ifneq ($(TARGET_PROVIDES_LIBLIGHT),true)
+display-hals += liblight
+endif
 
 ifeq ($(TARGET_USES_SDE), true)
     sde-libs := displayengine/libs
